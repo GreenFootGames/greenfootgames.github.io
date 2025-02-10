@@ -1,3 +1,3 @@
-My personal recreation of the iconic Whack-a-mole arcade game, with custom models and animations.
+My personal collection of simple WebGames that I created, all in one website!
 
 Link: https://greenfootgames.github.io/
