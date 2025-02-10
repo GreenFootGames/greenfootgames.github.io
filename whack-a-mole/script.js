@@ -1,8 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const playBtn = document.querySelector("button");
-    const moleTiles = document.querySelectorAll("img");
-    playBtn.addEventListener("click", function() {
-        playBtn.style.display = "none";
+    const hammer = document.getElementById("hammer");
+    const moleTiles = document.querySelectorAll(".mole");
+    const gameOverText = document.getElementById("gameover");
+    hammer.addEventListener("click", function() {
+        gameOverText.style.display = "none";
+        moleTiles.forEach(mole => {
+            mole.style.visibility = "hidden";
+        });
+        hammer.style.display = "none";
         Game(moleTiles);
         
     })
@@ -11,21 +16,25 @@ document.addEventListener("DOMContentLoaded", function() {
 function Game(moleTiles) {
     time = 30;
     const timer = document.getElementById("timer");
+    const pointCounter = document.getElementById("score");
+    pointCounter.innerText = "Points: 0";
 
     SelectTargetMole(moleTiles, 0);
-
+    timer.innerText = "Timer: " + time + "s";
     interval = setInterval(() => {
         timer.innerText = "Timer: "+ time + "s";
         if (time <= 0) {
             const gameOver = document.getElementById("gameover");
+            const hammer = document.getElementById("hammer");
             clearInterval(interval);
             // GAME OVER
             moleTiles.forEach(img => {
-                img.src = "Moel.gif";
-                img.style.visibility = "visible";
-                curMole.removeEventListener("click", img.whackHandler, { once: true });
+                img.style.visibility = "hidden";
+                img.removeEventListener("click", img.whackHandler, { once: true });
             })
             gameOver.style.display = "block";
+            hammer.style.display = "block";
+            
         }
         time--;
     }, 1000);
@@ -38,7 +47,7 @@ function SelectTargetMole(moleTiles, points) {
     curMole.style.visibility = "visible";
     setTimeout(function() {
         curMole.src = "Moel.gif";
-    }, 600)
+    }, 400)
     const whackHandler = Whack.bind(null, moleTiles, curMole, points);
     curMole.whackHandler = whackHandler;
     curMole.addEventListener("click", whackHandler, { once: true });

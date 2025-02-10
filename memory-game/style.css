@@ -5,6 +5,7 @@
 
 body {
     background-color: rgb(189, 141, 64);
+    font-family: 'Press Start 2P';
 }
 
 header {
@@ -76,6 +77,14 @@ main img {
 
 main img:hover {
     background-color: rgb(199, 106, 52);
+}
+
+#back-arrow {
+    position: absolute;
+    top: 0;
+    margin: 30px;
+    width: 70px;
+    image-rendering: crisp-edges;
 }
 
 footer {
