@@ -29,6 +29,10 @@ li {
     list-style: none;
 }
 
+li:hover {
+    background-color: rgb(35, 114, 69);
+}
+
 a:any-link {
     display: block;
     width: 100%;
